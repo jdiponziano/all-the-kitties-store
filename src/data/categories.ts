@@ -1,11 +1,11 @@
-type CategoryCardProps = {
+export type CategoryDataProps = {
   id: number;
   title: string;
   imageUrl: string;
   linkUrl: string;
 };
 
-export const categoryCardData: CategoryCardProps[] = [
+export const categoryData: CategoryDataProps[] = [
   {
     id: 1,
     title: "Hats",

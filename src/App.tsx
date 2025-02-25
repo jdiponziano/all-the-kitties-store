@@ -1,11 +1,16 @@
-import { categoryData } from "data/categories";
-import Directory from "components/directory";
+import { Routes, Route } from "react-router";
+import Navigation from "components/navigation";
+import Home from "routes/home";
+import Shop from "routes/shop";
 
 const App = () => {
   return (
-    <div className="site-container">
-      <Directory categories={categoryData} />
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+      </Route>
+    </Routes>
   );
 };
 

@@ -18,6 +18,11 @@ const Navigation = () => {
                 Shop
               </NavLink>
             </li>
+            <li>
+              <NavLink className="nav-link" to="/sign-in">
+                Sign In
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>

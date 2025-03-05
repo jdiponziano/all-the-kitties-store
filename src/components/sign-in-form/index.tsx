@@ -3,7 +3,6 @@ import { Input } from "components/form-elements";
 import Button from "components/button";
 import {
   signInWithGooglePopup,
-  createUser,
   signInAuthUserWithEmailAndPassword,
 } from "utils/firebase";
 import "./styles.scss";
@@ -16,13 +15,18 @@ const defaultFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFields);
   const { email, password } = formFields;
+
   const resetFormFields = () => {
     setFormFields(defaultFields);
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUser(user);
+    try {
+      await signInWithGooglePopup();
+    } catch (error) {
+      // TO DO: Add error handling messages on page
+      console.error("Google sign in encountered an error", error);
+    }
   };
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +40,7 @@ const SignIn = () => {
       await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
+      // TO DO: Add error & success handling messages on page
       if (error instanceof Error) {
         const errorCode = (error as any).code;
         switch (errorCode) {

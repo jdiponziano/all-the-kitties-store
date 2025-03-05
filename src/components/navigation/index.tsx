@@ -1,7 +1,12 @@
+import { FC, useContext } from "react";
 import { Outlet, NavLink, Link } from "react-router";
+import { UserContext } from "contexts/user.context";
+import { signOutUser } from "utils/firebase";
 import "./navigation.scss";
 
-const Navigation = () => {
+const Navigation: FC = () => {
+  const { currentUser } = useContext(UserContext);
+
   return (
     <div className="site-container">
       <header className="site-header">
@@ -19,9 +24,15 @@ const Navigation = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="nav-link" to="/account">
-                Sign In
-              </NavLink>
+              {currentUser ? (
+                <button className="nav-link nav-button" onClick={signOutUser}>
+                  Sign Out
+                </button>
+              ) : (
+                <NavLink className="nav-link" to="/account">
+                  Sign In
+                </NavLink>
+              )}
             </li>
           </ul>
         </nav>

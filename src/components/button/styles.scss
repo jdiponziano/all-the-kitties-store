@@ -9,7 +9,7 @@
   text-transform: uppercase;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -28,18 +28,17 @@
     background-color: #4285f4;
     color: white;
     &:hover {
-      background-color: #357ae8;
-      border: none;
+      background-color: white;
+      border-color: #4285f4;
+      color: #4285f4;
     }
   }
   &.inverted {
     background-color: white;
     color: black;
-    border: 1px solid black;
     &:hover {
       background-color: black;
       color: white;
-      border: none;
     }
   }
 }

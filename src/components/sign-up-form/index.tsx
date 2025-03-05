@@ -1,6 +1,9 @@
-import { UserCredential } from "firebase/auth";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { createAuthUserWithEmailAndPassword, createUser } from "utils/firebase";
+import { UserCredential } from "firebase/auth";
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocFromAuth,
+} from "utils/firebase";
 import { Input } from "components/form-elements";
 import Button from "components/button";
 
@@ -21,11 +24,13 @@ const SignUpForm = () => {
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+
     setFormFields({ ...formFields, [name]: value });
   };
 
   const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (password !== confirmPassword) {
       alert("passwords do not match");
       return;
@@ -35,9 +40,10 @@ const SignUpForm = () => {
       const response: UserCredential | undefined =
         await createAuthUserWithEmailAndPassword(email, password);
       if (response) {
-        await createUser(response.user, { displayName });
+        await createUserDocFromAuth(response.user, { displayName });
       }
       resetFormFields();
+      // TO DO: Add error & success messages to page
     } catch (error) {
       if (
         error instanceof Error &&

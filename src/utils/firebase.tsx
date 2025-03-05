@@ -1,10 +1,12 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  signOut,
   signInWithPopup,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   type User,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -30,7 +32,7 @@ export const signInWithGooglePopup = () =>
 
 export const db = getFirestore();
 
-export const createUser = async (
+export const createUserDocFromAuth = async (
   userAuth: User,
   profileInformation: Partial<User> = {}
 ) => {
@@ -74,4 +76,18 @@ export const signInAuthUserWithEmailAndPassword = async (
   if (!email || !password) return undefined;
 
   return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signOutUser = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Error signing out", error);
+  }
+};
+
+type AuthStateChangedType = (...args: any[]) => void;
+
+export const onAuthStateChangedListener = (callback: AuthStateChangedType) => {
+  return onAuthStateChanged(auth, callback);
 };

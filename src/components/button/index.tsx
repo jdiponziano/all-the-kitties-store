@@ -1,19 +1,19 @@
-import { ButtonHTMLAttributes, FC } from "react";
-import "./styles.scss";
+import { ButtonHTMLAttributes, FC } from 'react';
+import './styles.scss';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: keyof typeof BUTTON_TYPES;
 };
 
 const BUTTON_TYPES = {
-  google: "google-sign-in",
-  primary: "primary",
-  inverted: "secondary",
+  google: 'google-sign-in',
+  primary: 'primary',
+  inverted: 'secondary',
 };
 
 const Button: FC<ButtonProps> = ({
   children,
-  variant = "primary",
+  variant = 'primary',
   ...otherProps
 }) => {
   return (

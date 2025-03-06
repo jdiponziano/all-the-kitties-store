@@ -1,9 +1,9 @@
-import { ReactNode, FC, createContext, useState, useEffect } from "react";
-import { type User } from "firebase/auth";
+import { ReactNode, FC, createContext, useState, useEffect } from 'react';
+import { type User } from 'firebase/auth';
 import {
   onAuthStateChangedListener,
   createUserDocFromAuth,
-} from "utils/firebase";
+} from 'utils/firebase';
 
 type UserContextType = {
   currentUser: User | null;

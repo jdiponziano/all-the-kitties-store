@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { CategoryDataProps } from "data/categories";
-import "./styles.scss";
+import { FC } from 'react';
+import { CategoryDataProps } from 'data/categories';
+import './styles.scss';
 
 type CategoryItemProps = {
   card: CategoryDataProps;

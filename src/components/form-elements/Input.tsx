@@ -1,5 +1,5 @@
-import { FC, InputHTMLAttributes } from "react";
-import "./input.scss";
+import { FC, InputHTMLAttributes } from 'react';
+import './input.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -10,7 +10,7 @@ const Input: FC<InputProps> = ({ label, id, ...otherProps }) => {
   return (
     <div className="form-group">
       <label
-        className={`${!!otherProps.value ? "shrink" : ""} form-label`}
+        className={`${!!otherProps.value ? 'shrink' : ''} form-label`}
         htmlFor={id}
       >
         {label}

@@ -1,8 +1,8 @@
-import { FC, useContext } from "react";
-import { Outlet, NavLink, Link } from "react-router";
-import { UserContext } from "contexts/user.context";
-import { signOutUser } from "utils/firebase";
-import "./navigation.scss";
+import { FC, useContext } from 'react';
+import { Outlet, NavLink, Link } from 'react-router';
+import { UserContext } from 'contexts/user.context';
+import { signOutUser } from 'utils/firebase';
+import './navigation.scss';
 
 const Navigation: FC = () => {
   const { currentUser } = useContext(UserContext);

@@ -1,6 +1,6 @@
-import SignInForm from "components/sign-in-form";
-import SignUpForm from "components/sign-up-form";
-import "./styles.scss";
+import SignInForm from 'components/sign-in-form';
+import SignUpForm from 'components/sign-up-form';
+import './styles.scss';
 
 const Account = () => {
   return (

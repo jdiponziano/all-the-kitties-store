@@ -1,8 +1,8 @@
-import { Routes, Route } from "react-router";
-import Navigation from "components/navigation";
-import Home from "routes/home";
-import Shop from "routes/shop";
-import Account from "routes/account";
+import { Routes, Route } from 'react-router';
+import Navigation from 'components/navigation';
+import Home from 'routes/home';
+import Shop from 'routes/shop';
+import Account from 'routes/account';
 
 const App = () => {
   return (

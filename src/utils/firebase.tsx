@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signOut,
@@ -8,8 +8,8 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   type User,
-} from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+} from 'firebase/auth';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -24,7 +24,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
-googleProvider.setCustomParameters({ prompt: "select_account" });
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
@@ -38,7 +38,7 @@ export const createUserDocFromAuth = async (
 ) => {
   if (!userAuth) return;
 
-  const userRef = doc(db, "users", userAuth.uid);
+  const userRef = doc(db, 'users', userAuth.uid);
   const userSnapshot = await getDoc(userRef);
 
   if (!userSnapshot.exists()) {
@@ -53,7 +53,7 @@ export const createUserDocFromAuth = async (
         ...profileInformation,
       });
     } catch (error) {
-      console.log("error creating the user", error);
+      console.log('error creating the user', error);
     }
   }
 
@@ -82,7 +82,7 @@ export const signOutUser = async () => {
   try {
     await signOut(auth);
   } catch (error) {
-    console.error("Error signing out", error);
+    console.error('Error signing out', error);
   }
 };
 

@@ -33,13 +33,7 @@
       "react-app",
       "react-app/jest",
       "plugin:@typescript-eslint/recommended"
-    ],
-    "rules": {
-      "quotes": [
-        "error",
-        "single"
-      ]
-    }
+    ]
   },
   "browserslist": {
     "production": [

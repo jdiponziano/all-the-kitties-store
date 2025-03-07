@@ -13,13 +13,17 @@
   z-index: 5;
   overflow: auto;
 
+  li {
+    list-style: none;
+  }
+
   .empty-message {
     font-size: 1.125rem;
     margin: 3.125rem auto;
   }
 
   .cart-items {
-    height: 15rem;
+    height: 25rem;
     display: flex;
     flex-direction: column;
     overflow: auto;

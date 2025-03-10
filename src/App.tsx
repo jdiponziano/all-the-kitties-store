@@ -1,8 +1,9 @@
-import { Routes, Route } from 'react-router';
-import Navigation from 'components/navigation';
-import Home from 'routes/home';
-import Shop from 'routes/shop';
-import Account from 'routes/account';
+import { Routes, Route } from "react-router";
+import Navigation from "components/navigation";
+import Home from "routes/home";
+import Shop from "routes/shop";
+import Account from "routes/account";
+import Checkout from "routes/cart";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
         <Route path="account" element={<Account />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   );

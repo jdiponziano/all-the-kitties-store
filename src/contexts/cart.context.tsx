@@ -10,7 +10,10 @@ type CartContextProps = {
   toggleCart: () => void;
   cartCount: number;
   cartItems: CartItemProps[];
+  cartTotalPrice: number;
   addToCart: (item: ProductDataProps) => void;
+  removeFromCart: (item: CartItemProps) => void;
+  clearCartItem: (item: CartItemProps) => void;
 };
 
 export const addCartItem = (
@@ -37,6 +40,24 @@ export const addCartItem = (
   }
 };
 
+export const removeCartItem = (
+  cartItems: CartItemProps[],
+  productToRemove: CartItemProps
+) => {
+  const existingCardItem = cartItems.find(
+    (item) => item.id === productToRemove.id
+  );
+  if (existingCardItem?.quantity === 1) {
+    return cartItems.filter((item) => item.id !== productToRemove.id);
+  } else {
+    return cartItems.map((item) =>
+      item.id === productToRemove.id
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+  }
+};
+
 export const CartContext = createContext<CartContextProps>({
   isOpen: false,
   toggleCart: () => {
@@ -47,9 +68,13 @@ export const CartContext = createContext<CartContextProps>({
   addToCart: () => {
     console.warn("addToCart is not implemented");
   },
-  // removeItem: (item: any) => {},
-  // deleteItem: (item: any) => {},
-  // clearCart: () => {},
+  removeFromCart: () => {
+    console.warn("removeFromCart is not implemented");
+  },
+  clearCartItem: () => {
+    console.warn("deleteFromCart is not implemented");
+  },
+  cartTotalPrice: 0,
 });
 
 type CartProviderProps = {
@@ -63,8 +88,24 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
   const addToCart = (productToAdd: ProductDataProps) =>
     setCartItems((prevCartItems) => addCartItem(prevCartItems, productToAdd));
 
+  const removeFromCart = (productToRemove: CartItemProps) =>
+    setCartItems((prevCartItems) =>
+      removeCartItem(prevCartItems, productToRemove)
+    );
+
+  const clearCartItem = (cartItemToClear: CartItemProps) =>
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== cartItemToClear.id)
+    );
+
   const cartCount = useMemo(
     () => cartItems.reduce((total, item) => total + item.quantity, 0),
+    [cartItems]
+  );
+
+  const cartTotalPrice = useMemo(
+    () =>
+      cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
     [cartItems]
   );
 
@@ -74,6 +115,9 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
     cartCount,
     addToCart,
     cartItems,
+    removeFromCart,
+    clearCartItem,
+    cartTotalPrice,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import { CartContext } from "contexts/cart.context";
-import Button from "components/button";
+import Link from "components/link";
 import CartItem from "components/cart-items";
 import "./styles.scss";
 
@@ -20,7 +20,9 @@ const CartDropdown: FC = () => {
       ) : (
         <div className="empty-message">Your cart is empty</div>
       )}
-      <Button variant="primary">GO TO CHECKOUT</Button>
+      <Link to="checkout" variant="primary">
+        GO TO CHECKOUT
+      </Link>
     </div>
   );
 };

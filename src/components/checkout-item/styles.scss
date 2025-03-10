@@ -1,0 +1,14 @@
+.cart-product-description span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:first-child {
+    justify-content: start;
+  }
+}

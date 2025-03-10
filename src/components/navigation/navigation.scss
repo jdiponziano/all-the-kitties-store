@@ -15,6 +15,10 @@
   grid-auto-flow: column;
   align-items: center;
 
+  li {
+    list-style: none;
+  }
+
   .nav-link {
     text-decoration: none;
     color: #333;

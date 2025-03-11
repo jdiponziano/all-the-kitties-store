@@ -28,10 +28,10 @@ export const ProductCard: FC<ProductCardProps> = ({
       <div className="product-card-details">
         <h3 className="name">{name}</h3>
         <p className="price">{price}</p>
+        <Button variant="primary" type="button" onClick={handleAddToCart}>
+          Add to cart
+        </Button>
       </div>
-      <Button variant="inverted" type="button" onClick={handleAddToCart}>
-        Add to cart
-      </Button>
     </div>
   );
 };

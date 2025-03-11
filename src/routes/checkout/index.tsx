@@ -8,22 +8,20 @@ const Checkout = () => {
 
   return (
     <div>
-      <h1>Cart</h1>
+      <h1 className="page-title">Shopping Cart</h1>
       {cartItems.length > 0 ? (
         <div className="cart-grid">
-          <div className="cart-grid-header">
-            <div className="cart-grid-header-item">Product</div>
-            <div className="cart-grid-header-item">Quantity</div>
-            <div className="cart-grid-header-item">Price</div>
-            <div className="cart-grid-header-item">Remove</div>
-          </div>
           <div className="cart-grid-body">
             {cartItems.map((item) => (
               <CheckoutItem key={item.id} item={item} />
             ))}
           </div>
           <div className="cart-grid-footer">
-            <div className="cart-grid-footer-item">Total: {cartTotalPrice}</div>
+            <div className="cart-summary">
+              <p className="cart-grid-footer-item cart-total">
+                <span>Subtotal</span> <span>{cartTotalPrice}</span>
+              </p>
+            </div>
           </div>
         </div>
       ) : (

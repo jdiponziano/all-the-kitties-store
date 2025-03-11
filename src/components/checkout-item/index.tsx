@@ -1,5 +1,8 @@
 import { useContext, FC } from "react";
 import { CartContext, CartItemProps } from "contexts/cart.context";
+import { ReactComponent as PlusSign } from "assets/plus-sign.svg";
+import { ReactComponent as MinusSign } from "assets/minus-sign.svg";
+import { ReactComponent as Remove } from "assets/remove.svg";
 import "./styles.scss";
 
 const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
@@ -11,18 +14,39 @@ const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
     <div className="cart-grid-row">
       <div className="cart-grid-item cart-product-description">
         <span>
-          <img src={imageUrl} alt="" />
+          <div className="image-container">
+            <img src={imageUrl} alt="" />
+          </div>
           <span>{name}</span>
         </span>
       </div>
       <div className="cart-grid-item">
-        <button onClick={() => removeFromCart(item)}>-</button>
+        <button
+          aria-label={
+            quantity === 1
+              ? `Remove ${name} from cart`
+              : `Decrease quantity of ${name} in cart`
+          }
+          onClick={() => removeFromCart(item)}
+        >
+          <MinusSign />
+        </button>
         {quantity}
-        <button onClick={() => addToCart(item)}>+</button>
+        <button
+          aria-label={`Increase quantity of ${name} in cart`}
+          onClick={() => addToCart(item)}
+        >
+          <PlusSign />
+        </button>
       </div>
-      <div className="cart-grid-item">{quantity * price}</div>
+      <div className="cart-grid-item cart-price">{quantity * price}</div>
       <div className="cart-grid-item">
-        <button onClick={() => clearCartItem(item)}>X</button>
+        <button
+          aria-label={`Remove ${name} from cart`}
+          onClick={() => clearCartItem(item)}
+        >
+          <Remove />
+        </button>
       </div>
     </div>
   );

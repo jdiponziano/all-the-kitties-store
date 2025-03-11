@@ -1,15 +1,15 @@
-import { FormEvent, useState, ChangeEvent } from 'react';
-import { Input } from 'components/form-elements';
-import Button from 'components/button';
+import { FormEvent, useState, ChangeEvent } from "react";
+import { Input } from "components/form-elements";
+import Button from "components/button";
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
-} from 'utils/firebase';
-import './styles.scss';
+} from "utils/firebase";
+import "./styles.scss";
 
 const defaultFields = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 const SignIn = () => {
@@ -25,7 +25,7 @@ const SignIn = () => {
       await signInWithGooglePopup();
     } catch (error) {
       // TO DO: Add error handling messages on page
-      console.error('Google sign in encountered an error', error);
+      console.error("Google sign in encountered an error", error);
     }
   };
 
@@ -44,14 +44,14 @@ const SignIn = () => {
       if (error instanceof Error) {
         const errorCode = (error as any).code;
         switch (errorCode) {
-          case 'auth/wrong-password':
-            alert('Incorrect password for email');
+          case "auth/wrong-password":
+            alert("Incorrect password for email");
             break;
-          case 'auth/user-not-found':
-            alert('User not found, please use the signup form');
+          case "auth/user-not-found":
+            alert("User not found, please use the signup form");
             break;
           default:
-            console.error('User sign in encountered an error', error);
+            console.error("User sign in encountered an error", error);
         }
       }
     }
@@ -59,7 +59,7 @@ const SignIn = () => {
 
   return (
     <section>
-      <h2>I already have an account</h2>
+      <h2 className="h4">I already have an account</h2>
       <p>Sign in with your email and password</p>
       <form onSubmit={handleOnSubmit}>
         <Input

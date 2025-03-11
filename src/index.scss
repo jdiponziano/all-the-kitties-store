@@ -1,5 +1,6 @@
 :root {
   --base-font-size: 16px;
+  --base-text-color: #333;
   --heading-font-font-family: "DM Sans", sans-serif;
   --heading-font-font-style: normal;
   --heading-font-font-weight: 600;
@@ -46,6 +47,7 @@ html {
 html,
 body {
   font-size: var(--base-font-size);
+  color: var(--base-text-color);
 }
 
 body {
@@ -61,9 +63,13 @@ body {
 }
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
-h4 {
+.h3,
+h4,
+.h4 {
   font-family: var(--heading-font-font-family);
   font-style: var(--heading-font-font-style);
   font-weight: var(--heading-font-font-weight);
@@ -72,7 +78,8 @@ h4 {
   text-transform: var(--heading-font-text-transform);
 }
 
-h1 {
+h1,
+.h1 {
   margin: 0.67em 0;
   font-size: 2em;
   line-height: calc(
@@ -82,7 +89,8 @@ h1 {
 }
 
 @media screen and (max-width: 767px) and (orientation: portrait) {
-  h1 {
+  h1,
+  .h1 {
     font-size: calc(
       (var(--heading-1-size-value) - 1) * calc(0.012 * min(100vh, 900px)) + 1rem
     );
@@ -91,18 +99,21 @@ h1 {
 
 @media screen and (min-width: 768px),
   screen and (max-width: calc(1664px - 1px)) and (orientation: landscape) {
-  h1 {
+  h1,
+  .h1 {
     font-size: calc((var(--heading-1-size-value) - 1) * 1.2vw + 1rem);
   }
 }
 
 @media screen and (min-width: 1664px) {
-  h1 {
+  h1,
+  .h1 {
     font-size: calc(var(--heading-1-size-value) * 1rem);
   }
 }
 
-h2 {
+h2,
+.h2 {
   line-height: calc(
     var(--heading-font-line-height) *
       (1 + (1 - var(--heading-2-size-value)) / 25)
@@ -110,7 +121,8 @@ h2 {
 }
 
 @media screen and (max-width: 767px) and (orientation: portrait) {
-  h2 {
+  h2,
+  .h2 {
     font-size: calc(
       (var(--heading-2-size-value) - 1) * calc(0.012 * min(100vh, 900px)) + 1rem
     );
@@ -119,18 +131,21 @@ h2 {
 
 @media screen and (min-width: 768px),
   screen and (max-width: calc(1664px - 1px)) and (orientation: landscape) {
-  h2 {
+  h2,
+  .h2 {
     font-size: calc((var(--heading-2-size-value) - 1) * 1.2vw + 1rem);
   }
 }
 
 @media screen and (min-width: 1664px) {
-  h2 {
+  h2,
+  .h2 {
     font-size: calc(var(--heading-2-size-value) * 1rem);
   }
 }
 
-h3 {
+h3,
+.h3 {
   line-height: calc(
     var(--heading-font-line-height) *
       (1 + (1 - var(--heading-3-size-value)) / 25)
@@ -138,7 +153,8 @@ h3 {
 }
 
 @media screen and (max-width: 767px) and (orientation: portrait) {
-  h3 {
+  h3,
+  .h3 {
     font-size: calc(
       (var(--heading-3-size-value) - 1) * calc(0.012 * min(100vh, 900px)) + 1rem
     );
@@ -147,18 +163,21 @@ h3 {
 
 @media screen and (min-width: 768px),
   screen and (max-width: calc(1664px - 1px)) and (orientation: landscape) {
-  h3 {
+  h3,
+  .h3 {
     font-size: calc((var(--heading-3-size-value) - 1) * 1.2vw + 1rem);
   }
 }
 
 @media screen and (min-width: 1664px) {
-  h3 {
+  h3,
+  .h3 {
     font-size: calc(var(--heading-3-size-value) * 1rem);
   }
 }
 
-h4 {
+h4,
+.h4 {
   line-height: calc(
     var(--heading-font-line-height) *
       (1 + (1 - var(--heading-4-size-value)) / 25)
@@ -166,7 +185,8 @@ h4 {
 }
 
 @media screen and (max-width: 767px) and (orientation: portrait) {
-  h4 {
+  h4,
+  .h4 {
     font-size: calc(
       (var(--heading-4-size-value) - 1) * calc(0.012 * min(100vh, 900px)) + 1rem
     );
@@ -175,13 +195,15 @@ h4 {
 
 @media screen and (min-width: 768px),
   screen and (max-width: calc(1664px - 1px)) and (orientation: landscape) {
-  h4 {
+  h4,
+  .h4 {
     font-size: calc((var(--heading-4-size-value) - 1) * 1.2vw + 1rem);
   }
 }
 
 @media screen and (min-width: 1664px) {
-  h4 {
+  h4,
+  .h4 {
     font-size: calc(var(--heading-4-size-value) * 1rem);
   }
 }
@@ -251,4 +273,10 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }

@@ -3,7 +3,7 @@ import Navigation from "components/navigation";
 import Home from "routes/home";
 import Shop from "routes/shop";
 import Account from "routes/account";
-import Checkout from "routes/cart";
+import Checkout from "routes/checkout";
 
 const App = () => {
   return (

@@ -1,17 +1,17 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
-import { UserCredential } from 'firebase/auth';
+import { useState, ChangeEvent, FormEvent } from "react";
+import { UserCredential } from "firebase/auth";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocFromAuth,
-} from 'utils/firebase';
-import { Input } from 'components/form-elements';
-import Button from 'components/button';
+} from "utils/firebase";
+import { Input } from "components/form-elements";
+import Button from "components/button";
 
 const defaultFields = {
-  displayName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
+  displayName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
 };
 
 const SignUpForm = () => {
@@ -32,7 +32,7 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert('passwords do not match');
+      alert("passwords do not match");
       return;
     }
 
@@ -47,18 +47,18 @@ const SignUpForm = () => {
     } catch (error) {
       if (
         error instanceof Error &&
-        (error as any).code === 'auth/email-already-in-use'
+        (error as any).code === "auth/email-already-in-use"
       ) {
-        alert('email already in use');
+        alert("email already in use");
       } else {
-        console.error('User creation encountered an error', error);
+        console.error("User creation encountered an error", error);
       }
     }
   };
 
   return (
     <section>
-      <h2>Don't have an account?</h2>
+      <h2 className="h4">Don't have an account?</h2>
       <p>Sign up with your email and password.</p>
       <form onSubmit={handleOnSubmit}>
         <Input

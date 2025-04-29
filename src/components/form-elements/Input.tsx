@@ -1,23 +1,21 @@
-import { FC, InputHTMLAttributes } from 'react';
-import './input.scss';
+import { FC, InputHTMLAttributes } from "react";
+import { FormGroup, FormLabel, FormInput } from "./form-elements.styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
 }
 
-const Input: FC<InputProps> = ({ label, id, ...otherProps }) => {
+export const Input: FC<InputProps> = ({ label, id, ...otherProps }) => {
   return (
-    <div className="form-group">
-      <label
-        className={`${!!otherProps.value ? 'shrink' : ''} form-label`}
+    <FormGroup>
+      <FormLabel
+        className={`${!!otherProps.value ? "shrink" : ""}`}
         htmlFor={id}
       >
         {label}
-      </label>
-      <input className="form-input" id={id} {...otherProps} />
-    </div>
+      </FormLabel>
+      <FormInput id={id} {...otherProps} />
+    </FormGroup>
   );
 };
-
-export default Input;

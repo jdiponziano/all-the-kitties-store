@@ -1,20 +1,24 @@
 import { FC } from "react";
-import { CategoryItemProps } from "contexts/categories.context";
+import { CategoryDataProps } from "data/categories";
 
-import "./styles.scss";
+import {
+  CategoryItemLink,
+  CategoryItemImage,
+  CategoryItemContent,
+  CategoryItemTitle,
+  CategoryItemCTA,
+} from "./category-item.styles";
 
-const CategoryItem: FC<CategoryItemProps> = (props) => {
-  const { name, imageUrl } = props;
+export const CategoryItem: FC<CategoryDataProps> = (props) => {
+  const { title, imageUrl } = props;
 
   return (
-    <a className="category-item" href={`/${name.toLowerCase()}`}>
-      <img alt="" className="category-item__image" src={imageUrl} />
-      <div className="category-item__content">
-        <h3 className="category-item__title">{name}</h3>
-        <p className="category-item__description">Shop Now</p>
-      </div>
-    </a>
+    <CategoryItemLink to={`/shop/${title.toLowerCase()}`}>
+      <CategoryItemImage alt="" src={imageUrl} />
+      <CategoryItemContent>
+        <CategoryItemTitle>{title}</CategoryItemTitle>
+        <CategoryItemCTA>Shop Now</CategoryItemCTA>
+      </CategoryItemContent>
+    </CategoryItemLink>
   );
 };
-
-export default CategoryItem;

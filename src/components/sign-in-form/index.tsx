@@ -5,7 +5,7 @@ import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
 } from "utils/firebase";
-import "./styles.scss";
+import { SignInFormActions } from "./sign-in-form.styles";
 
 const defaultFields = {
   email: "",
@@ -80,12 +80,12 @@ const SignIn = () => {
           onChange={handleOnChange}
           required
         />
-        <div className="sign-in-actions">
+        <SignInFormActions className="sign-in-actions">
           <Button type="submit">Sign In</Button>
           <Button type="button" variant="google" onClick={signInWithGoogle}>
             Sign in with Google
           </Button>
-        </div>
+        </SignInFormActions>
       </form>
     </section>
   );

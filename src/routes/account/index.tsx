@@ -1,15 +1,15 @@
-import SignInForm from 'components/sign-in-form';
-import SignUpForm from 'components/sign-up-form';
-import './styles.scss';
+import SignInForm from "components/sign-in-form";
+import SignUpForm from "components/sign-up-form";
+import { TwoColumnsFormsContainer } from "components/layouts/two-columns-forms-container";
 
 const Account = () => {
   return (
     <div>
       <h1 className="sr-only">SignIn</h1>
-      <div className="sign-in-forms-container">
+      <TwoColumnsFormsContainer>
         <SignInForm />
         <SignUpForm />
-      </div>
+      </TwoColumnsFormsContainer>
     </div>
   );
 };

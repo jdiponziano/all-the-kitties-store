@@ -3,7 +3,13 @@ import { CartContext, CartItemProps } from "contexts/cart.context";
 import { ReactComponent as PlusSign } from "assets/plus-sign.svg";
 import { ReactComponent as MinusSign } from "assets/minus-sign.svg";
 import { ReactComponent as Remove } from "assets/remove.svg";
-import "./styles.scss";
+import {
+  CheckoutItem as StyledCartItem,
+  CheckoutItemContainer,
+  CheckoutItemButton,
+  CheckoutItemDetails,
+  CheckoutItemPrice,
+} from "./checkout-item.styles";
 
 const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
   const { addToCart, removeFromCart, clearCartItem } = useContext(CartContext);
@@ -11,17 +17,17 @@ const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
   const { name, imageUrl, price, quantity } = item;
 
   return (
-    <div className="cart-grid-row">
-      <div className="cart-grid-item cart-product-description">
+    <CheckoutItemContainer>
+      <CheckoutItemDetails>
         <span>
           <div className="image-container">
             <img src={imageUrl} alt="" />
           </div>
           <span>{name}</span>
         </span>
-      </div>
-      <div className="cart-grid-item">
-        <button
+      </CheckoutItemDetails>
+      <StyledCartItem>
+        <CheckoutItemButton
           aria-label={
             quantity === 1
               ? `Remove ${name} from cart`
@@ -30,25 +36,25 @@ const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
           onClick={() => removeFromCart(item)}
         >
           <MinusSign />
-        </button>
+        </CheckoutItemButton>
         {quantity}
-        <button
+        <CheckoutItemButton
           aria-label={`Increase quantity of ${name} in cart`}
           onClick={() => addToCart(item)}
         >
           <PlusSign />
-        </button>
-      </div>
-      <div className="cart-grid-item cart-price">{quantity * price}</div>
-      <div className="cart-grid-item">
-        <button
+        </CheckoutItemButton>
+      </StyledCartItem>
+      <CheckoutItemPrice>{quantity * price}</CheckoutItemPrice>
+      <StyledCartItem>
+        <CheckoutItemButton
           aria-label={`Remove ${name} from cart`}
           onClick={() => clearCartItem(item)}
         >
           <Remove />
-        </button>
-      </div>
-    </div>
+        </CheckoutItemButton>
+      </StyledCartItem>
+    </CheckoutItemContainer>
   );
 };
 

@@ -11,7 +11,7 @@ import {
   CheckoutItemPrice,
 } from "./checkout-item.styles";
 
-const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
+export const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
   const { addToCart, removeFromCart, clearCartItem } = useContext(CartContext);
 
   const { name, imageUrl, price, quantity } = item;
@@ -57,5 +57,3 @@ const CheckoutItem: FC<{ item: CartItemProps }> = ({ item }) => {
     </CheckoutItemContainer>
   );
 };
-
-export default CheckoutItem;

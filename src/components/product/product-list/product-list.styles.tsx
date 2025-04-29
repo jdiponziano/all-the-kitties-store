@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ShopDirectoryList = styled.ul`
+export const ProductList = styled.ul`
   padding: 0;
   margin: 0;
   display: grid;
@@ -9,5 +9,3 @@ export const ShopDirectoryList = styled.ul`
   row-gap: 3rem;
   list-style: none;
 `;
-
-export const ShopCategoryList = styled.ul``;

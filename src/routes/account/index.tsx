@@ -1,5 +1,5 @@
-import SignInForm from "components/sign-in-form";
-import SignUpForm from "components/sign-up-form";
+import SignInForm from "components/forms/sign-in-form";
+import SignUpForm from "components/forms/sign-up-form";
 import { TwoColumnsFormsContainer } from "components/layouts/two-columns-forms-container";
 
 const Account = () => {

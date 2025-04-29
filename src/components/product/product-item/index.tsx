@@ -3,12 +3,12 @@ import { CartContext } from "contexts/cart.context";
 import { CategoryItemProps } from "contexts/categories.context";
 import { Button } from "components/base/button";
 import {
-  ProductCardContainer,
-  ProductCardImage,
-  ProductCardDetails,
-} from "./product-card.styles";
+  ProductItemContainer,
+  ProductItemImage,
+  ProductItemDetails,
+} from "./product-item.styles";
 
-export const ProductCard: FC<CategoryItemProps> = ({
+export const ProductItem: FC<CategoryItemProps> = ({
   id,
   imageUrl,
   name,
@@ -21,15 +21,15 @@ export const ProductCard: FC<CategoryItemProps> = ({
   };
 
   return (
-    <ProductCardContainer>
-      <ProductCardImage alt="" src={imageUrl} />
-      <ProductCardDetails>
+    <ProductItemContainer>
+      <ProductItemImage alt="" src={imageUrl} />
+      <ProductItemDetails>
         <h3 className="name">{name}</h3>
         <p className="price">{price}</p>
         <Button variant="primary" type="button" onClick={handleAddToCart}>
           Add to cart
         </Button>
-      </ProductCardDetails>
-    </ProductCardContainer>
+      </ProductItemDetails>
+    </ProductItemContainer>
   );
 };

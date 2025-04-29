@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CategoryItem } from "components/category-item";
+import { CategoryItem } from "components/category/category-item";
 import { CategoryDataProps } from "data/categories";
 import { CategoryList, CategoryListItem } from "./category-directory.styles";
 

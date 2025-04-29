@@ -4,9 +4,7 @@ import {
   CategoriesContext,
   CategoryItemProps,
 } from "contexts/categories.context";
-import { ProductCard } from "components/product-card";
-import "./styles.scss";
-import { ShopDirectoryList } from "components/shop-directory/shop-directory.styles";
+import { ProductList, ProductItem } from "components/product";
 
 const Category: FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -20,13 +18,13 @@ const Category: FC = () => {
   return (
     <div>
       {products ? (
-        <ShopDirectoryList>
+        <ProductList>
           {products.map((product) => (
             <li key={product.id}>
-              <ProductCard key={product.id} {...product} />
+              <ProductItem key={product.id} {...product} />
             </li>
           ))}
-        </ShopDirectoryList>
+        </ProductList>
       ) : (
         <p>There are no products in this category</p>
       )}

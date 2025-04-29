@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router";
-import { ShopDirectory } from "components/shop-directory";
+import { ShopDirectory } from "components/sections/shop-directory";
 import Category from "routes/category";
 
 const Shop = () => {

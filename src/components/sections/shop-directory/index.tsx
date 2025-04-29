@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router";
 import { CategoriesContext } from "contexts/categories.context";
-import { ProductCard } from "components/product-card";
-import { ShopDirectoryList } from "./shop-directory.styles";
+import { ProductItem, ProductList } from "components/product";
 
 export const ShopDirectory = () => {
   const { categories } = useContext(CategoriesContext);
@@ -15,13 +14,13 @@ export const ShopDirectory = () => {
           <h2 className="h4">
             <Link to={`shop/${categoryTitle}`}>{categoryTitle}</Link>
           </h2>
-          <ShopDirectoryList>
+          <ProductList>
             {products.slice(0, 4).map((product) => (
               <li key={product.id}>
-                <ProductCard {...product} />
+                <ProductItem {...product} />
               </li>
             ))}
-          </ShopDirectoryList>
+          </ProductList>
         </div>
       ))}
     </div>

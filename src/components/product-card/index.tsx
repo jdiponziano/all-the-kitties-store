@@ -1,16 +1,14 @@
 import { FC, useContext } from "react";
 import { CartContext } from "contexts/cart.context";
-import Button from "components/button";
-import "./styles.scss";
+import { CategoryItemProps } from "contexts/categories.context";
+import { Button } from "components/base/button";
+import {
+  ProductCardContainer,
+  ProductCardImage,
+  ProductCardDetails,
+} from "./product-card.styles";
 
-export type ProductCardProps = {
-  id: number;
-  imageUrl: string;
-  name: string;
-  price: number;
-};
-
-export const ProductCard: FC<ProductCardProps> = ({
+export const ProductCard: FC<CategoryItemProps> = ({
   id,
   imageUrl,
   name,
@@ -23,15 +21,15 @@ export const ProductCard: FC<ProductCardProps> = ({
   };
 
   return (
-    <div className="product-card">
-      <img alt="" src={imageUrl} />
-      <div className="product-card-details">
+    <ProductCardContainer>
+      <ProductCardImage alt="" src={imageUrl} />
+      <ProductCardDetails>
         <h3 className="name">{name}</h3>
         <p className="price">{price}</p>
         <Button variant="primary" type="button" onClick={handleAddToCart}>
           Add to cart
         </Button>
-      </div>
-    </div>
+      </ProductCardDetails>
+    </ProductCardContainer>
   );
 };

@@ -1,19 +1,16 @@
-import { FC } from 'react';
-import { CategoryDataProps } from 'data/categories';
-import './styles.scss';
+import { FC } from "react";
+import { CategoryItemProps } from "contexts/categories.context";
 
-type CategoryItemProps = {
-  card: CategoryDataProps;
-};
+import "./styles.scss";
 
-const CategoryItem: FC<CategoryItemProps> = ({ card }) => {
-  const { title, imageUrl, linkUrl } = card;
+const CategoryItem: FC<CategoryItemProps> = (props) => {
+  const { name, imageUrl } = props;
 
   return (
-    <a className="category-item" href={linkUrl}>
+    <a className="category-item" href={`/${name.toLowerCase()}`}>
       <img alt="" className="category-item__image" src={imageUrl} />
       <div className="category-item__content">
-        <h3 className="category-item__title">{title}</h3>
+        <h3 className="category-item__title">{name}</h3>
         <p className="category-item__description">Shop Now</p>
       </div>
     </a>

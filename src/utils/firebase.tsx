@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signOut,
@@ -8,8 +8,17 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   type User,
-} from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+} from "firebase/auth";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -24,7 +33,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
-googleProvider.setCustomParameters({ prompt: 'select_account' });
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
@@ -32,13 +41,52 @@ export const signInWithGooglePopup = () =>
 
 export const db = getFirestore();
 
+export const addCollectionAndDocuments = async (
+  collectionKey: string,
+  objectsToAdd: any[]
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((obj: any) => {
+    const docRef = doc(collectionRef, obj.title.toLowerCase());
+    batch.set(docRef, obj);
+  });
+
+  await batch.commit();
+  console.log("Collection added successfully");
+};
+
+type Category = {
+  title: string;
+  items: any[];
+};
+
+export const getCategoriesAndDocuments = async (): Promise<
+  Record<string, any[]>
+> => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce(
+    (acc: Record<string, any[]>, docSnapshot) => {
+      const { title, items } = docSnapshot.data() as Category;
+      acc[title.toLowerCase()] = items;
+      return acc;
+    },
+    {}
+  );
+
+  return categoryMap;
+};
 export const createUserDocFromAuth = async (
   userAuth: User,
   profileInformation: Partial<User> = {}
 ) => {
   if (!userAuth) return;
 
-  const userRef = doc(db, 'users', userAuth.uid);
+  const userRef = doc(db, "users", userAuth.uid);
   const userSnapshot = await getDoc(userRef);
 
   if (!userSnapshot.exists()) {
@@ -53,7 +101,7 @@ export const createUserDocFromAuth = async (
         ...profileInformation,
       });
     } catch (error) {
-      console.log('error creating the user', error);
+      console.log("error creating the user", error);
     }
   }
 
@@ -82,7 +130,7 @@ export const signOutUser = async () => {
   try {
     await signOut(auth);
   } catch (error) {
-    console.error('Error signing out', error);
+    console.error("Error signing out", error);
   }
 };
 

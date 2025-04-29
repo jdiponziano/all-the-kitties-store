@@ -1,6 +1,6 @@
 import { FormEvent, useState, ChangeEvent } from "react";
 import { Input } from "components/form-elements";
-import Button from "components/button";
+import { Button } from "components/base/button";
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,

@@ -5,7 +5,7 @@ import {
   createUserDocFromAuth,
 } from "utils/firebase";
 import { Input } from "components/form-elements";
-import Button from "components/button";
+import { Button } from "components/base/button";
 
 const defaultFields = {
   displayName: "",

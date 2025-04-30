@@ -9,10 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input: FC<InputProps> = ({ label, id, ...otherProps }) => {
   return (
     <FormGroup>
-      <FormLabel
-        className={`${!!otherProps.value ? "shrink" : ""}`}
-        htmlFor={id}
-      >
+      <FormLabel shrink={!!otherProps.value} htmlFor={id}>
         {label}
       </FormLabel>
       <FormInput id={id} {...otherProps} />

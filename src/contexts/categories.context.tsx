@@ -28,7 +28,6 @@ export const CategoriesProvider: FC<CategoriesProviderProps> = ({
   useEffect(() => {
     const getCategories = async () => {
       const categoryMap = await getCategoriesAndDocuments();
-      console.log(categoryMap);
       setCategories(categoryMap);
     };
 

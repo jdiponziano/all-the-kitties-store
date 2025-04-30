@@ -1,7 +1,10 @@
 import { FC, useContext } from "react";
 import { CartContext } from "contexts/cart.context";
-import { ReactComponent as ShoppingIcon } from "assets/cart-icon.svg";
-import { CartIconContainer, CartIconText } from "./cart-icon.styles";
+import {
+  CartIconContainer,
+  CartIconText,
+  ShoppingIcon,
+} from "./cart-icon.styles";
 
 export type CartIconProps = {
   onClick?: () => void;
@@ -12,7 +15,7 @@ export const CartIcon: FC<CartIconProps> = ({ onClick }) => {
 
   return (
     <CartIconContainer onClick={onClick}>
-      <ShoppingIcon className="shopping-icon" />
+      <ShoppingIcon />
       <CartIconText>{cartCount}</CartIconText>
     </CartIconContainer>
   );

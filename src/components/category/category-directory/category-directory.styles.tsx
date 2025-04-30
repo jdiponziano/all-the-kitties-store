@@ -25,8 +25,4 @@ export const CategoryListItem = styled.li`
   &:last-child {
     margin-left: 0.46875rem;
   }
-
-  &.large {
-    height: 23.75rem;
-  }
 `;

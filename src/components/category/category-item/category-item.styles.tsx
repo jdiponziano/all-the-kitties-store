@@ -1,30 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router";
 
-export const CategoryItemLink = styled(Link)`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-
-  &:hover {
-    cursor: pointer;
-    .category-item {
-      &__image {
-        transform: scale(1.1);
-        transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-      }
-
-      &__content {
-        opacity: 0.9;
-      }
-    }
-  }
-`;
-
 export const CategoryItemImage = styled.img`
   width: 100%;
   height: 100%;
@@ -42,6 +18,29 @@ export const CategoryItemContent = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
+`;
+
+export const CategoryItemLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+
+    & ${CategoryItemImage} {
+      transform: scale(1.1);
+      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+
+    & ${CategoryItemContent} {
+      opacity: 0.9;
+    }
+  }
 `;
 
 export const CategoryItemTitle = styled.h3`

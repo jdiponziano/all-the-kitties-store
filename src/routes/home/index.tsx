@@ -1,8 +1,8 @@
-import { categoryData } from 'data/categories';
-import Directory from 'components/directory';
+import { categoryData } from "data/categories";
+import { CategoryDirectory } from "components/category/category-directory";
 
 const Home = () => {
-  return <Directory categories={categoryData} />;
+  return <CategoryDirectory categories={categoryData} />;
 };
 
 export default Home;
